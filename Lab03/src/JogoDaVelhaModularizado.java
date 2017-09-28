@@ -3,7 +3,7 @@ import java.util.Scanner;
 /*
  * Aluno 1: MATHEUS CLEMENTE PEREIRA
  * Aluno 2: EVELIN FLORENÇO DA SILVA
- * 
+ * Aluno 3: CARLOS VINICIUS NASCIMENTO LIRA
  */
 
 public class JogoDaVelhaModularizado {
@@ -146,22 +146,20 @@ public class JogoDaVelhaModularizado {
 	}
 	
 	private static boolean verificaVencedor(char tabuleiro[][], int jogada, char O, char X){
+		final int NUM_JOGADAS = 9;
 		if(verificaCaracteres(tabuleiro, O))
         {
-        	//imprimeTabuleiro(tabuleiro);
         	System.out.print("\nJogador 1, VOCE VENCEU!!!");
             return true;
         }
         if(verificaCaracteres(tabuleiro, X))
         {
-        	//imprimeTabuleiro(tabuleiro);
         	System.out.print("\nJogador 2, VOCE VENCEU!!!");
         	return true;
         }
 
-        if(jogada==9)
+        if(jogada==NUM_JOGADAS)
         {
-        	//imprimeTabuleiro(tabuleiro);
         	System.out.print("\nPARTIDA EMPATADA");
         	return true;
         }
