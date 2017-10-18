@@ -75,7 +75,7 @@ public class JogoDaVelhaCampeonato {
 	        int chave = vit[j];
 	        int i = j-1;
 	        
-	        while(i>0 && vit[i]>chave){
+	        while(i>0 && vit[i]<chave){
 	            vit[i+1] = vit[i];
 	            vetor[i+1] = i;
 	            i--;
@@ -85,6 +85,7 @@ public class JogoDaVelhaCampeonato {
 	    
 	    return vetor;
 	}
+	
 	
 	private static void inicioJogo(String jogador[], int i, int j, int vitorias[]){
 		char tabuleiro[][] = new char[3][3];

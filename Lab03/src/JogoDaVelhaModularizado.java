@@ -93,8 +93,15 @@ public class JogoDaVelhaModularizado {
         
         sc = new Scanner (System.in);
 		i = sc.nextInt();
+		if (i>3 && i<1){
+			recebeArgumentos(tabuleiro, jogada, O, X);
+		}
+		
         System.out.print("COLUNA: ");
         j = sc.nextInt();
+        if (j>3 && j<1){
+			recebeArgumentos(tabuleiro, jogada, O, X);
+		}
         
         if (preencheTabuleiro(tabuleiro, jogada, i, j, O, X)){
         	imprimeTelaPrincipal(tabuleiro);
