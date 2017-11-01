@@ -1,5 +1,7 @@
 package lab05;
 
+import java.util.Arrays;
+
 import org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -64,20 +66,53 @@ public class TestaRobo {
 	
 	@Test
 	public void testaPosicao(){
-		
-		Assert.assertTrue(robo.getPosicaoInicial() == [0,0]);
-		
+		try{
+			robo = new Robo(salaRobo, ENERGIA);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		int[] aux = {0,0};
+		Assert.assertTrue(Arrays.equals(robo.getPosicao(), aux));
 		Assert.assertTrue(robo.isSalaPosicaoLivre(0, 0));
 		try{
 			salaRobo.inserirObstaculo(0, 0);
 			robo = new Robo(salaRobo, ENERGIA);
-			Assert.assertTrue(robo.getPosicaoInicial() == [0,1]);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		int[] aux2 = {0,1};
+		Assert.assertTrue(Arrays.equals(robo.getPosicao(), aux2));
+	}
+	
+	@Test
+	public void testaMovimentos(){
+		try{
+			robo = new Robo(salaRobo, ENERGIA);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		
+		Assert.assertFalse(robo.moveParaTras());
+		Assert.assertFalse(robo.moveParaEsquerda());
+		Assert.assertTrue(robo.getEnergia() == ENERGIA);
+		Assert.assertTrue(robo.getPassos() == 0);
+		Assert.assertTrue(robo.moveParaFrente());
+		int[] aux = {1,0};
+		Assert.assertTrue(Arrays.equals(robo.getPosicao(), aux));
+		Assert.assertTrue(robo.moveParaDireita());
+		int[] aux2 = {1,1};
+		Assert.assertTrue(Arrays.equals(robo.getPosicao(), aux2));
+		Assert.assertTrue(robo.moveParaEsquerda());
+		Assert.assertTrue(Arrays.equals(robo.getPosicao(), aux));
+		Assert.assertTrue(robo.moveParaTras());
+		int[] aux3 = {0,0};
+		Assert.assertTrue(Arrays.equals(robo.getPosicao(), aux3));
 	}
 	
-	
+	@Test
+	public void testaMovimentosComObstaculos(){
+		
+	}
 
 }
