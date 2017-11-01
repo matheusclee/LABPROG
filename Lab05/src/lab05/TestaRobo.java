@@ -112,7 +112,19 @@ public class TestaRobo {
 	
 	@Test
 	public void testaMovimentosComObstaculos(){
+		try{
+			robo = new Robo(salaRobo, ENERGIA);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		
+		robo.inserirObstaculo(1,0);
+		robo.inserirObstaculo(0,2);
+		
+		Assert.assertFalse(robo.moveParaFrente());
+		Assert.assertTrue(robo.getEnergia() == ENERGIA);
+		int[] aux = {0,0};
+		Assert.assertFalse(robo.getPosicao() == aux);
 	}
 
 }
