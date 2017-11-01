@@ -64,11 +64,20 @@ public class TestaRobo {
 	
 	@Test
 	public void testaPosicao(){
-		Assert.assertTrue(robo.getPosicao() == );
+		
+		Assert.assertTrue(robo.getPosicaoInicial() == [0,0]);
+		
+		Assert.assertTrue(robo.isSalaPosicaoLivre(0, 0));
 		try{
-			
+			salaRobo.inserirObstaculo(0, 0);
+			robo = new Robo(salaRobo, ENERGIA);
+			Assert.assertTrue(robo.getPosicaoInicial() == [0,1]);
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		
 	}
+	
+	
 
 }
