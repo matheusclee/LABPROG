@@ -124,7 +124,26 @@ public class TestaRobo {
 		Assert.assertFalse(robo.moveParaFrente());
 		Assert.assertTrue(robo.getEnergia() == ENERGIA);
 		int[] aux = {0,0};
-		Assert.assertFalse(robo.getPosicao() == aux);
+		Assert.assertFalse(Arrays.equals(robo.getPosicao(), aux));
+		Assert.assertTrue(robo.moveParaDireita());
+		int[] aux2 = {0,1};
+		Assert.assertTrue(Arrays.equals(robo.getPosicao(), aux2));
+		Assert.assertTrue(robo.getPassos() == 1);
+		Assert.assertTrue(robo.getEnergia() == 9);
+		Assert.assertFalse(robo.moveParaDireita());
+		Assert.assertTrue(Arrays.equals(robo.getPosicao(), aux2));
+		Assert.assertTrue(robo.getPassos() == 1);
+		Assert.assertTrue(robo.getEnergia() == 9);
+		Assert.assertTrue(robo.moveParaFrente());
+		int[] aux3 = {1,1};
+		Assert.assertTrue(Arrays.equals(robo.getPosicao(), aux3));
+		Assert.assertTrue(robo.getPassos() == 2);
+		Assert.assertTrue(robo.getEnergia() == 8);
+		Assert.assertTrue(robo.moveParaDireira());
+		int[] aux4 = {1,2};
+		Assert.assertTrue(Arrays.equals(robo.getPosicao(), aux4));
+		Assert.assertTrue(robo.getPassos() == 3);
+		Assert.assertTrue(robo.getEnergia() == 7);
 	}
 
 }
