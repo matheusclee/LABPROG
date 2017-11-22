@@ -1,6 +1,6 @@
 /* 
  * ALUNO 1: Matheus Clemente Pereira
- * ALUNO 2: Carlos Vinicius
+ * ALUNO 2: Carlos Vinicius N Lira
  */
 
 package lab06;
@@ -122,7 +122,7 @@ public class CD {
 	 * @return - retorna o elemento da posicao i ou retorna null
 	 */
 	public String getI(int i) {
-		if(i < faixas.size()-1){
+		if(i < faixas.size()){
 			return faixas.get(i);
 		}
 		
