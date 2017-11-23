@@ -62,10 +62,21 @@ public class MinhaCDteca {
 		
 	}
 	
-	
+	/**
+	 * Remove uma coleção de CD's da biblioteca, mesmo que a biblioteca tenha apenas um elemento da coleção passada pelo parametro.
+	 * 
+	 * @param colecao Recebe uma colecao de CD's.
+	 * @return Retorna True ou False.
+	 */
 	public boolean removeCDs(MinhaCDteca colecao){
-		
-		return true;
+		boolean status = false;
+		for(int i = 0; i < colecao.numeroDeCDs(); i++){
+			CD aux = colecao.getI(i);
+			if(removeCD(colecao.getI(i).getTitulo()) == aux){
+				status = true;
+			}
+		}
+		return status;
 	}
 	
 	/**
@@ -86,8 +97,8 @@ public class MinhaCDteca {
 	/**
 	 * Metodo para pesquisar se existe o objeto na biblioteca. 
 	 * 
-	 * @param titulo Re
-	 * @return
+	 * @param titulo Recebe uma String como parametro.
+	 * @return Retorna o CD pesquisado ou null caso nao exista. 
 	 */
 	public CD pesquisaCD(String titulo){
 		for(int i = 0; i < numeroDeCDs(); i++){
@@ -99,10 +110,22 @@ public class MinhaCDteca {
 		return null;
 	}
 
+	/**
+	 * Metodo que retorna a quantidade de CD's armazenados na biblioteca.
+	 * 
+	 * @return Retorna um inteiro.
+	 */
 	public int numeroDeCDs() {
 		if(armazenaCDs.isEmpty()){
 			return 0;
 		}
 		return armazenaCDs.size();
+	}
+	
+	@Override
+	public String toString(){
+		StringBuilder info = new StringBuilder();
+		info.append(arg0);
+		return null;	
 	}
 }

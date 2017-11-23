@@ -18,9 +18,10 @@ public class TestaMinhaCDteca{
 	
 	@Before
 	public void CriaObjetos() throws Exception{
+		
 		disco1 = new CD("Ao vivo", "Banda", 10);
 		disco2 = new CD("Na sua Casa", "Armando", 10);
-		disco3 = new CD("Ao vivo", "Banda", 10);
+		disco3 = new CD("Ao vivo2", "Banda", 10);
 		discos = new MinhaCDteca();
 	}
 	
@@ -36,6 +37,7 @@ public class TestaMinhaCDteca{
 	
 	@Test
 	public void TestaAdicionaCDs(){
+		
 		discos.adicionaCD(disco1);
 		discos.adicionaCD(disco2);
 		discos.adicionaCD(disco3);
@@ -51,7 +53,6 @@ public class TestaMinhaCDteca{
 		Assert.assertTrue(disco3.equals(discos2.getI(2)));
 		Assert.assertTrue(disco2.equals(discos2.getI(3)));
 		Assert.assertFalse(discos2.getI(4) == null);
-		
 	}
 	
 	@Test
@@ -62,7 +63,38 @@ public class TestaMinhaCDteca{
 		Assert.assertTrue(discos.removeCD(disco1.getTitulo()) == disco1);
 		Assert.assertFalse(discos.removeCD(disco1.getTitulo()) == disco1);
 		Assert.assertTrue(discos.getI(0) == disco2);
+	}
+	
+	@Test
+	public void TestaRemoveCDs(){
 		
+		discos.adicionaCD(disco1);
+		discos.adicionaCD(disco2);
+		discos.adicionaCD(disco3);
+		
+		MinhaCDteca discos2 = new MinhaCDteca();
+		
+		discos2.adicionaCDs(discos);
+		discos2.removeCD("Ao vivo2");
+		Assert.assertTrue(discos2.numeroDeCDs() == 2);
+		Assert.assertTrue(discos2.removeCDs(discos));
+		Assert.assertTrue(discos2.numeroDeCDs() == 0);
+		Assert.assertFalse(discos2.removeCDs(discos));
+		discos2.adicionaCDs(discos);
+		discos2.adicionaCD(disco2);
+		discos2.removeCDs(discos);
+		Assert.assertTrue(discos2.getI(0) == disco2);
+		Assert.assertTrue(discos2.getI(1) == null);
+	}
+	
+	@Test
+	public void TestaPesquisaCD(){
+		discos.adicionaCD(disco1);
+		discos.adicionaCD(disco2);
+		
+		Assert.assertTrue(discos.pesquisaCD("Ao vivo") == disco1);
+		Assert.assertTrue(discos.pesquisaCD("Na sua Casa") == disco2);
+		Assert.assertTrue(discos.pesquisaCD("Nao existe") == null);
 	}
 	
 }
