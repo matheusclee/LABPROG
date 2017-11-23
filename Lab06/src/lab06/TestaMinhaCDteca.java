@@ -6,18 +6,27 @@
 package lab06;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-public class TestaMinhaCDteca {
+public class TestaMinhaCDteca{
+	
+	private CD disco1;
+	private CD disco2;
+	private CD disco3;
+	MinhaCDteca discos;
+	
+	@Before
+	public void CriaObjetos() throws Exception{
+		disco1 = new CD("Ao vivo", "Banda", 10);
+		disco2 = new CD("Na sua Casa", "Armando", 10);
+		disco3 = new CD("Ao vivo", "Banda", 10);
+		discos = new MinhaCDteca();
+	}
 	
 	@Test
 	public void TestaAdicionaCD() throws Exception{
 		
-		CD disco1 = new CD("Ao vivo", "Banda", 10);
-		CD disco2 = new CD("Na sua Casa", "Armando", 10);
-		CD disco3 = new CD("Ao vivo", "Banda", 10);
-			
-		MinhaCDteca discos = new MinhaCDteca();
 		discos.adicionaCD(disco1);
 		Assert.assertTrue(disco1.equals(discos.getI(0)));
 		discos.adicionaCD(disco2);
@@ -25,6 +34,13 @@ public class TestaMinhaCDteca {
 		Assert.assertTrue(disco2.equals(discos.getI(1)));
 	}	
 	
-	
+	@Test
+	public void TestaRemoveCD(){
+		
+		discos.adicionaCD(disco1);
+		discos.adicionaCD(disco2);
+		discos.removeCD(disco1);
+		Assert.assertFalse(disco1.equals(discos.getI(0)));
+	}
 	
 }
