@@ -25,7 +25,7 @@ public class TestaMinhaCDteca{
 	}
 	
 	@Test
-	public void TestaAdicionaCD() throws Exception{
+	public void TestaAdicionaCD(){
 		
 		discos.adicionaCD(disco1);
 		Assert.assertTrue(disco1.equals(discos.getI(0)));
@@ -35,12 +35,34 @@ public class TestaMinhaCDteca{
 	}	
 	
 	@Test
+	public void TestaAdicionaCDs(){
+		discos.adicionaCD(disco1);
+		discos.adicionaCD(disco2);
+		discos.adicionaCD(disco3);
+		Assert.assertTrue(discos.getI(3) == null);
+		
+		MinhaCDteca discos2 = new MinhaCDteca();
+		
+		discos2.adicionaCDs(discos);
+		discos2.adicionaCD(disco2);
+		discos2.adicionaCD(disco1);
+		
+		Assert.assertTrue(disco1.equals(discos2.getI(0)));
+		Assert.assertTrue(disco3.equals(discos2.getI(2)));
+		Assert.assertTrue(disco2.equals(discos2.getI(3)));
+		Assert.assertFalse(discos2.getI(4) == null);
+		
+	}
+	
+	@Test
 	public void TestaRemoveCD(){
 		
 		discos.adicionaCD(disco1);
 		discos.adicionaCD(disco2);
-		discos.removeCD(disco1);
-		Assert.assertFalse(disco1.equals(discos.getI(0)));
+		Assert.assertTrue(discos.removeCD(disco1.getTitulo()) == disco1);
+		Assert.assertFalse(discos.removeCD(disco1.getTitulo()) == disco1);
+		Assert.assertTrue(discos.getI(0) == disco2);
+		
 	}
 	
 }
