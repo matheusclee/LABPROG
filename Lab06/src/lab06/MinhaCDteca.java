@@ -122,10 +122,26 @@ public class MinhaCDteca {
 		return armazenaCDs.size();
 	}
 	
+	/**
+	 * Metodo que compara duas colecoes do tipo MinhaCDteca e são iguas se ambas tiverem os mesmos CD's.
+	 * 
+	 * @param colecao Recebe uma colecao de CD's.
+	 * @return Retorna True ou False.
+	 */
+	public boolean equals(MinhaCDteca colecao){
+		
+		return true;
+	}
+	
+	/**
+	 * Retorna os dados dos CD's que estao na biblioteca.
+	 */
 	@Override
 	public String toString(){
 		StringBuilder info = new StringBuilder();
-		info.append(arg0);
-		return null;	
+		for(int i = 0; i < numeroDeCDs(); i++){
+			info.append("Titulo: " + getI(i).getTitulo() + " Artista: " + getI(i).getArtista() + "\n");
+		}
+		return info.toString();	
 	}
 }
