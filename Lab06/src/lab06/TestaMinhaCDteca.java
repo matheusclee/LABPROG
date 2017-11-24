@@ -97,4 +97,17 @@ public class TestaMinhaCDteca{
 		Assert.assertTrue(discos.pesquisaCD("Nao existe") == null);
 	}
 	
+	@Test
+	public void TestaEquals(){
+		discos.adicionaCD(disco1);
+		discos.adicionaCD(disco2);
+		discos.adicionaCD(disco3);
+		
+		MinhaCDteca discos2 = new MinhaCDteca();
+		discos2.adicionaCDs(discos);
+		
+		Assert.assertTrue(discos.equals(discos2));
+		
+	}
+	
 }

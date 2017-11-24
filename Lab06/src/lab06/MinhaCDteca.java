@@ -129,8 +129,26 @@ public class MinhaCDteca {
 	 * @return Retorna True ou False.
 	 */
 	public boolean equals(MinhaCDteca colecao){
+		boolean status = false;
+		if(colecao.numeroDeCDs() <= numeroDeCDs()){
+			for(int i = 0; i < colecao.numeroDeCDs(); i++){
+				if(pesquisaCD(colecao.getI(i).getTitulo()) == colecao.getI(i)){
+					status = true;
+				}else{
+					status = false;
+				}
+			}
+		}else{
+			for(int i = 0; i < numeroDeCDs(); i++){
+				if(colecao.pesquisaCD(getI(i).getTitulo()) == getI(i)){
+					status = true;
+				}else{
+					status = false;
+				}
+			}
+		}
 		
-		return true;
+		return status;
 	}
 	
 	/**
