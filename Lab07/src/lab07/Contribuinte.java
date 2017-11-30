@@ -28,7 +28,7 @@ public abstract class Contribuinte {
 	Scanner sc = new Scanner(System.in);
 	
 	/**
-	 * Contrutor da Classe AbstrataContribuinte.
+	 * Construtor da Classe AbstrataContribuinte.
 	 * 
 	 * @param nome Recebe o nome do contribuinte.
 	 * @param cod Recebe o codigo do contribuinte.
@@ -36,25 +36,20 @@ public abstract class Contribuinte {
 	 * @param temCarro Recebe false ou true se o contrbuinte river Carro.
 	 * 
 	 */
-	public Contribuinte(String nome, String cod, boolean temCasa, boolean temCarro){
+	public Contribuinte(String nome, String cod){
+		setNome(nome);
+		setCodContribuinte(cod);
+		numDeContribuintes++;
+	}
+	
+	public Contribuinte(String nome, String cod, boolean temCasa, double valorCasa, boolean temCarro, double valorCarro){
 		setNome(nome);
 		setCodContribuinte(cod);
 		if(temCasa){
 			setCasas();
 		}
 		if(temCarro){
-			setCarros();
-		}
-		numDeContribuintes++;
-	}
-	
-	public Contribuinte(String nome, String cod, double numCasas, double numCarros){
-		setNome(nome);
-		setCodContribuinte(cod);
-		if(numCarros > 0){
-			for(int i = 0; i < numCarros; i++){
-				setCarros(valor);
-			}
+			setCarros(valorCarro);
 		}
 	}
 	
