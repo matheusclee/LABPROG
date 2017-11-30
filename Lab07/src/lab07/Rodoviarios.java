@@ -4,8 +4,8 @@ public abstract class Rodoviarios extends Contribuinte{
 
 	private double kmRodados;
 	
-	public Rodoviarios(String nome, String cod, boolean temCasa, boolean temCarro, double kmRodados) {
-		super(nome, cod, temCasa, kmRodados, temCarro, kmRodados);
+	public Rodoviarios(String nome, String cod, double valorCasa, double valorCarro, double kmRodados) {
+		super(nome, cod, valorCasa, valorCarro);
 		setKmRodados(kmRodados);
 	}
 	

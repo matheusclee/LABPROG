@@ -7,7 +7,6 @@ package lab07;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Classe Abstrata Contribuinte.
@@ -20,12 +19,9 @@ public abstract class Contribuinte {
 	protected String nome;
 	protected String codContribuinte;
 	private int numDeContribuintes;
-	protected int numDeCasas = 0;
-	private double[] valoresCasas;
-	protected int numDeCarros = 0;
-	private List<Carro> carros = new ArrayList();
-	private double[] valoresCarros;
-	Scanner sc = new Scanner(System.in);
+	private List<Casa> casas = new ArrayList<Casa>();
+	private List<Carro> carros = new ArrayList<Carro>();
+	private List<String> codigos = new ArrayList<String>();
 	
 	/**
 	 * Construtor da Classe AbstrataContribuinte.
@@ -36,37 +32,36 @@ public abstract class Contribuinte {
 	 * @param temCarro Recebe false ou true se o contrbuinte river Carro.
 	 * 
 	 */
-	public Contribuinte(String nome, String cod){
+	public Contribuinte(String nome, String cod, double valorCasa, double valorCarro){
 		setNome(nome);
 		setCodContribuinte(cod);
+		if(valorCasa > 0){
+			setCasas(valorCasa);
+		}
+		if(valorCarro > 0){
+			setCarros(valorCarro);
+		}
 		numDeContribuintes++;
 	}
 	
-	public Contribuinte(String nome, String cod, boolean temCasa, double valorCasa, boolean temCarro, double valorCarro){
-		setNome(nome);
-		setCodContribuinte(cod);
-		if(temCasa){
-			setCasas();
-		}
-		if(temCarro){
-			setCarros(valorCarro);
-		}
-	}
-	
-	private void setCarros(double valor) {
+	/**
+	 * Adiciona um carro ao contribuinte.
+	 * 
+	 * @param valor Recebe o valor do Carro.
+	 */
+	public void setCarros(double valor) {
 		Carro carro = new Carro(valor);
 		carros.add(carro);
 	}
 
-	private void setCasas() {
-		System.out.print("Qual o numero de Casas: ");
-		numDeCasas = sc.nextInt();
-		valoresCasas = new double[numDeCasas];
-		for(int i = 0; i < numDeCasas; i++){
-			System.out.print("Informe o valor da casa " + i+1 + ": ");
-			valoresCasas[i] = sc.nextDouble();
-		}
-		
+	/**
+	 * Adiciona uma casa ao Contribuinte.
+	 * 
+	 * @param valor Recebe o valor do Carro.
+	 */
+	private void setCasas(double valor) {
+		Casa casa = new Casa(valor);
+		casas.add(casa);
 	}
 	
 	/**
@@ -78,29 +73,62 @@ public abstract class Contribuinte {
 		this.nome = nome;
 	}
 	
+	/**
+	 * Retorna o nome do contribuinte.
+	 * 
+	 * @return Retorna uma String.
+	 */
 	public String getNome(){
 		return nome;
 	}
 	
-	private void setCodContribuinte(String cod){
-		codContribuinte = cod;
+	/**
+	 * Retorna True caso o codigo informado esteja disponivel. Retorna False caso nao esteja disponivel.
+	 * 
+	 * @param cod Recebe uma String como codigo;
+	 * @return Retorna um boolean.
+	 */
+	private boolean setCodContribuinte(String cod){
+		if(!codigos.contains(cod)) {
+			codContribuinte = cod;
+			codigos.add(cod);
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
+	/**
+	 * Retorna o codigo do contribuinte.
+	 * 
+	 * @return Retorna uma String.
+	 */
 	public String getCodContribuinte(){
 		return codContribuinte;
 	}
 	
-	private void setNumdeContribuintes(){
-		
+	/**
+	 * Retorna a quantidade de contribuintes cadastrados.
+	 * 
+	 * @return Retorna um inteiro.
+	 */
+	public int getNumdeContribuintes(){
+		return numDeContribuintes;
 	}
 	
+	/**
+	 * Retorna o valor total dos bens do contribuinte.
+	 * 
+	 * @return Retorna um double.
+	 */
 	public double valorAcumuladoBens(){
 		double aux = 0;
-		for(int i = 0; i < numDeCasas; i++){
-			aux+=valoresCasas[i];
+		for(int i = 0; i < casas.size(); i++){
+			aux+=casas.get(i).getValor();
 		}
-		for(int i = 0; i < numDeCarros; i++){
-			aux+=valoresCarros[i];
+		
+		for(int i = 0; i < carros.size(); i++){
+			aux+=carros.get(i).getValor();
 		}
 		
 		return aux;

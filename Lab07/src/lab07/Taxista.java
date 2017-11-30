@@ -4,8 +4,8 @@ public class Taxista extends Rodoviarios {
 	
 	private int numPassageiros;
 
-	public Taxista(String nome, String cod, boolean temCasa, boolean temCarro, double kmrodados, int passageiros) {
-		super(nome, cod, temCasa, temCarro, kmrodados);
+	public Taxista(String nome, String cod, double valorCasa, double valorCarro, double kmRodados, int passageiros) {
+		super(nome, cod, valorCasa, valorCarro, kmRodados);
 		setNumPassageiros(passageiros);
 	}
 
