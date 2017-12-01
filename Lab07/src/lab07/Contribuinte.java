@@ -133,4 +133,15 @@ public abstract class Contribuinte {
 		
 		return aux;
 	}
+	
+	protected double riquezaGeral(double riquezaProfissao) {
+		return riquezaProfissao += this.valorAcumuladoBens();
+	}
+	
+	protected boolean mediaRiqueza(double riquezaProfissao, int numProfissionais) {
+		if(this.valorAcumuladoBens() < (riquezaProfissao/numProfissionais)*1.5) {
+			return true;
+		}
+		return false;
+	}
 }

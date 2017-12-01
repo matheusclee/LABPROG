@@ -9,16 +9,15 @@ public class Professores extends Contribuinte{
 	private double salario;
 	private String entidade;
 	private double materialDidatico;
-	private double sinalExteriorDeRiquezaGeral;
+	private double riquezaProfessores;
 	private int numProfessores;
-	private List<Professores> professores = new ArrayList<Professores>();
 	
 	public Professores(String nome, String cod, double valorCasa, double valorCarro, double salario, double materialDidatico, String entidade) {
 		super(nome, cod, valorCasa, valorCarro);
 		setSalario(salario);
 		setMaterialDidatico(materialDidatico);
 		setEntidade(entidade);
-		setSinalExteriorDeRiquezaGeral();
+		riquezaProfessores = this.riquezaGeral(riquezaProfessores);
 		numProfessores++;
 	}
 
@@ -61,19 +60,8 @@ public class Professores extends Contribuinte{
 		return getMaterialDidatico();
 	}
 	
-	private void addProfessor() {
-		
-	}
-	
-	private void setSinalExteriorDeRiquezaGeral() {
-		sinalExteriorDeRiquezaGeral += this.valorAcumuladoBens();
-	}
-	
-	private boolean sinalExteriorDeRiqueza() {
-		if(this.valorAcumuladoBens() < (sinalExteriorDeRiquezaGeral/numProfessores)*1.5) {
-			return true;
-		}
-		return false;
+	public boolean sinalDeRiquezaExterior(){
+		return this.mediaRiqueza(riquezaProfessores, numProfessores);
 	}
 
 }
