@@ -24,13 +24,11 @@ public abstract class Contribuinte {
 	private List<String> codigos = new ArrayList<String>();
 	
 	/**
-	 * Construtor da Classe AbstrataContribuinte.
-	 * 
-	 * @param nome Recebe o nome do contribuinte.
-	 * @param cod Recebe o codigo do contribuinte.
-	 * @param temCasa Recebe false ou true se o contribinte tiver Casa.
-	 * @param temCarro Recebe false ou true se o contrbuinte river Carro.
-	 * 
+	 * Construtor da classe contribuinte.
+	 * @param nome Recebe uma String.
+	 * @param cod Recebe uma String.
+	 * @param valorCasa Recebe um double.
+	 * @param valorCarro Recebe um double.
 	 */
 	public Contribuinte(String nome, String cod, double valorCasa, double valorCarro){
 		setNome(nome);
@@ -46,22 +44,32 @@ public abstract class Contribuinte {
 	
 	/**
 	 * Adiciona um carro ao contribuinte.
-	 * 
-	 * @param valor Recebe o valor do Carro.
+	 * Se o carro for adiconado, retorna true.
+	 * @param valor Recebe um double.
+	 * @return Retorna um boolean.
 	 */
-	public void setCarros(double valor) {
-		Carro carro = new Carro(valor);
-		carros.add(carro);
+	public boolean setCarros(double valor) {
+		if(valor > 0){
+			Carro carro = new Carro(valor);
+			carros.add(carro);
+			return true;
+		}
+		return false;
 	}
 
 	/**
-	 * Adiciona uma casa ao Contribuinte.
-	 * 
-	 * @param valor Recebe o valor do Carro.
+	 * Adicona uma casa ao contribuinte.
+	 * Retorna true se a casa for adiconada.
+	 * @param valor Recebe um double.
+	 * @return Retorna um boolean.
 	 */
-	private void setCasas(double valor) {
-		Casa casa = new Casa(valor);
-		casas.add(casa);
+	private boolean setCasas(double valor) {
+		if(valor > 0){
+			Casa casa = new Casa(valor);
+			casas.add(casa);
+			return true;
+		}
+		return false;
 	}
 	
 	/**
