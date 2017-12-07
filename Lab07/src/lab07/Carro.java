@@ -1,3 +1,8 @@
+/*
+ * Aluno 1: Matheus Clemente Pereira
+ * Aluno 2: Carlos Vinicius
+ * Aluno 3: Jeffiti Mucio
+ */
 package lab07;
 
 /**
