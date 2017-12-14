@@ -1,6 +1,7 @@
 /* 
  * ALUNO 1: Matheus Clemente Pereira
  * ALUNO 2: Carlos Vinicius N Lira
+ * ALUNO 3: Jeffiti Mucio
  */
 
 package lab06;

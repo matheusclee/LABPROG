@@ -1,3 +1,9 @@
+
+/*
+ * ALUNO 1: Matheus Clemente Pereira
+ * ALUNO 2: Jeffiti Mucio
+ */
+
 package lab05;
 
 import java.util.Arrays;
