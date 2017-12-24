@@ -3,17 +3,52 @@ import interfaces.naMosca;;
 
 public class Produto implements naMosca {
 
+	private String nome;
+	private int nota;
+	private String comentario;
+	private final int NUM_MAXIMO_DE_CARACTERES = 140;
+	private final int NOTA_MINIMA = -2;
+	private final int NOTA_MAXIMA = 2;
+	
+	/**
+	 * Metodo que incrementa o nome do produto.
+	 * 
+	 * @param nome 
+	 * 		Recebe uma String.
+	 */
+	public void setNome(String nome){
+		this.nome = nome;
+	}
+	
+	/**
+	 * Metodo que retorna o nome do produto.
+	 * 
+	 * @return
+	 * 		Retorna uma String.
+	 */
+	public String getNome(){
+		return this.nome;
+	}
 	
 	
 	@Override
 	public void setNota(int nota) throws Exception {
-		// TODO Auto-generated method stub
+		if(nota >= this.NOTA_MINIMA && nota <= this.NOTA_MAXIMA){
+			this.nota = nota;
+		}else{
+			throw new Exception("Nota inválida.");
+		}
+		this.nota = nota;
 		
 	}
 
 	@Override
 	public void setComentario(String comentario) throws Exception {
-		// TODO Auto-generated method stub
+		if(comentario.length() > this.NUM_MAXIMO_DE_CARACTERES){
+			throw new Exception("Numero de caracteres maior que 140.");
+		}else{
+			this.comentario = comentario;
+		}
 		
 	}
 
@@ -25,14 +60,12 @@ public class Produto implements naMosca {
 
 	@Override
 	public int getNota() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.nota;
 	}
 
 	@Override
 	public String getComentario() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.comentario;
 	}
 
 }
