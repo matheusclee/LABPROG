@@ -1,14 +1,21 @@
-package objetos;
-import interfaces.naMosca;;
+/*
+ * Aluno 1: Matheus Clemente Pereira
+ * Aluno 2: Adenou Dantas
+ * Aluno 3: Jeffiti Mucio
+ * Aluno 4: Carlos Vinicius - Professor autorizou por e-mail incluir um 4º membro.
+ * 
+ */
 
-public class Produto implements naMosca {
+package objetos;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class Produto {
 
 	private String nome;
-	private int nota;
-	private String comentario;
-	private final int NUM_MAXIMO_DE_CARACTERES = 140;
-	private final int NOTA_MINIMA = -2;
-	private final int NOTA_MAXIMA = 2;
+	private List<NotaNaMosca> notas = new ArrayList();
 	
 	/**
 	 * Metodo que incrementa o nome do produto.
@@ -30,42 +37,34 @@ public class Produto implements naMosca {
 		return this.nome;
 	}
 	
+	/**
+	 * Metodo que adiciona uma avaliaçao ao produto.
+	 * @param nota
+	 * 		Recebe um inteiro.
+	 * @param comentario
+	 * 		Recebe uma String.
+	 * @param data
+	 * 		Recebe um objeto do tipo data.
+	 * @throws Exception 
+	 * 		Retorna uma Exception caso houve algum parametro invalido.
+	 */
+	public void adicionaNota(int nota, String comentario, Date data) throws Exception{
+		NotaNaMosca avaliacao = new NotaNaMosca();
+		avaliacao.setNota(nota);
+		avaliacao.setComentario(comentario);
+		avaliacao.setData(data);
+		
+		notas.add(avaliacao);
+	}
 	
-	@Override
-	public void setNota(int nota) throws Exception {
-		if(nota >= this.NOTA_MINIMA && nota <= this.NOTA_MAXIMA){
-			this.nota = nota;
-		}else{
-			throw new Exception("Nota inválida.");
-		}
-		this.nota = nota;
+	public void imprimirSimples(){
 		
 	}
-
-	@Override
-	public void setComentario(String comentario) throws Exception {
-		if(comentario.length() > this.NUM_MAXIMO_DE_CARACTERES){
-			throw new Exception("Numero de caracteres maior que 140.");
-		}else{
-			this.comentario = comentario;
-		}
+	
+	public String toString(){
 		
-	}
-
-	@Override
-	public void setData(int dia, int mes, int ano) throws Exception {
-		// TODO Auto-generated method stub
+		return nome;
 		
-	}
-
-	@Override
-	public int getNota() {
-		return this.nota;
-	}
-
-	@Override
-	public String getComentario() {
-		return this.comentario;
 	}
 
 }

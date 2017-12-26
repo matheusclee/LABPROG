@@ -1,4 +1,14 @@
+/*
+ * Aluno 1: Matheus Clemente Pereira
+ * Aluno 2: Adenou Dantas
+ * Aluno 3: Jeffiti Mucio
+ * Aluno 4: Carlos Vinicius - Professor autorizou por e-mail incluir um 4º membro.
+ * 
+ */
+
 package interfaces;
+
+import java.util.Date;
 
 public interface naMosca {
 	
@@ -22,13 +32,13 @@ public interface naMosca {
 	public void setComentario(String comentario) throws Exception; //comentario deve ter no maximo 140 caracteres
 	
 	/**
-	 * 
-	 * @param dia
-	 * @param mes
-	 * @param ano
+	 * Metodo que adiciona uma data ao comentario.
+	 * @param data
+	 * 		Recebe um objeto do tipo data.
 	 * @throws Exception
+	 * 		Caso a data for inválida, retorna uma Exception.
 	 */
-	public void setData(int dia, int mes, int ano) throws Exception;//adiciona a data
+	public void setData(Date data) throws Exception;//adiciona a data
 	
 	/**
 	 * Metodo que retorna a nota do produto.
@@ -43,4 +53,14 @@ public interface naMosca {
 	 * 		Retorna uma String.
 	 */
 	public String getComentario(); //retorna o comentario
+	
+	/**
+	 * Metodo que retorna a data da avaliação.
+	 * 
+	 * @return
+	 * 		Retorna um objeto do tipo Date.
+	 */
+	public Date getData();
+	
+	
 }
