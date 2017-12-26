@@ -1,9 +1,7 @@
 /*
  * Aluno 1: Matheus Clemente Pereira
- * Aluno 2: Adenou Dantas
- * Aluno 3: Jeffiti Mucio
- * Aluno 4: Carlos Vinicius - Professor autorizou por e-mail incluir um 4º membro.
- * 
+ * Aluno 2: Jeffiti Mucio
+ * Aluno 3: Carlos Vinicius
  */
 
 package objetos;
@@ -44,7 +42,7 @@ public class NotaNaMosca implements naMosca{
 
 	@Override
 	public void setData(Date data) throws Exception {
-		if(data.getYear() < 2000){
+		if(data.getYear() < 2017){
 			throw new Exception("Data inválida.");
 		}else{
 			this.data = data;

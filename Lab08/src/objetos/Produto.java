@@ -1,9 +1,7 @@
 /*
  * Aluno 1: Matheus Clemente Pereira
- * Aluno 2: Adenou Dantas
- * Aluno 3: Jeffiti Mucio
- * Aluno 4: Carlos Vinicius - Professor autorizou por e-mail incluir um 4º membro.
- * 
+ * Aluno 2: Jeffiti Mucio
+ * Aluno 3: Carlos Vinicius
  */
 
 package objetos;
@@ -57,13 +55,13 @@ public class Produto {
 		notas.add(avaliacao);
 	}
 	
-	public void imprimirSimples(){
+	/**
+	 * Metodo que imprime as avaliaçoes no modo Estrategia Simples.
+	 */
+	public void imprimirEstrategiaSimples(){
 		if(notas.size() > 1){
-			int nota = 0;
-			for(int i = 0; i < notas.size(); i++){
-				nota += notas.get(i).getNota();
-			}
-			System.out.print("Nota Na Mosca: " + nota/notas.size() + "\n");
+			notaMedia(notas.size());
+			
 			int menorNota = -1;
 			int maiorNota = -1;
 			for(int i = 0; i < notas.size(); i++){
@@ -74,24 +72,47 @@ public class Produto {
 					menorNota = i;
 				}
 			}
+			System.out.print(notas.get(maiorNota).getData());
 			System.out.println(notas.get(maiorNota).getComentario());
+			System.out.print(notas.get(menorNota).getData());
 			System.out.println(notas.get(menorNota).getComentario());
 			
-			
 		}else{
-			if(notas.size() == 1){
-				System.out.println("00000000000000");
-			}
+			System.out.println("Nota Na Mosca: " + notas.get(0).getNota());
+			System.out.print(notas.get(0).getData());
+			System.out.println(notas.get(0).getComentario());
 		}
-		
-		
 		
 	}
 	
-	public String toString(){
-		
-		return nome;
-		
+	/**
+	 * Metodo que imprime as avaliacoes no modo Estrategia Sazonal.
+	 */
+	public void imprimirEstrategiaSazonal(){
+		if(notas.size() > 1){
+			notaMedia(notas.size());
+			
+			//ultimo comentario
+			System.out.print(notas.get(notas.size()-1).getData());
+			System.out.println(notas.get(notas.size()-1).getComentario());
+			
+			//penultimo comentario
+			System.out.print(notas.get(notas.size()-2).getData());
+			System.out.println(notas.get(notas.size()-2).getComentario());
+		}else{
+			System.out.println("Nota Na Mosca: " + notas.get(0).getNota());
+			System.out.print(notas.get(0).getData());
+			System.out.println(notas.get(0).getComentario());
+		}
 	}
+	
+	private void notaMedia(int numNotas){
+		int media = 0;
+		for(int i = 0; i < numNotas; i++){
+			media += notas.get(i).getNota();
+		}
+		System.out.println("Nota Na Mosca: " + media/numNotas);
+	}
+	
 
 }

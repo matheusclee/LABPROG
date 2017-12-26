@@ -1,9 +1,7 @@
 /*
  * Aluno 1: Matheus Clemente Pereira
- * Aluno 2: Adenou Dantas
- * Aluno 3: Jeffiti Mucio
- * Aluno 4: Carlos Vinicius - Professor autorizou por e-mail incluir um 4º membro.
- * 
+ * Aluno 2: Jeffiti Mucio
+ * Aluno 3: Carlos Vinicius
  */
 
 package interfaces;
