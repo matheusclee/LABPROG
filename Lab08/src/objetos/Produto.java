@@ -58,6 +58,33 @@ public class Produto {
 	}
 	
 	public void imprimirSimples(){
+		if(notas.size() > 1){
+			int nota = 0;
+			for(int i = 0; i < notas.size(); i++){
+				nota += notas.get(i).getNota();
+			}
+			System.out.print("Nota Na Mosca: " + nota/notas.size() + "\n");
+			int menorNota = -1;
+			int maiorNota = -1;
+			for(int i = 0; i < notas.size(); i++){
+				if(notas.get(i).getNota()>notas.get(i+1).getNota()){
+					maiorNota = i;
+				}
+				if(notas.get(i).getNota() < notas.get(i+1).getNota()){
+					menorNota = i;
+				}
+			}
+			System.out.println(notas.get(maiorNota).getComentario());
+			System.out.println(notas.get(menorNota).getComentario());
+			
+			
+		}else{
+			if(notas.size() == 1){
+				System.out.println("00000000000000");
+			}
+		}
+		
+		
 		
 	}
 	
